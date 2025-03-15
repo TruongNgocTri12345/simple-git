@@ -3,17 +3,17 @@ import moment from "moment";
 import simpleGit from "simple-git";
 import random from "random";
 
-const path = "./data.json";
+const path = "data.json";
 
 const isValidDate = (date) => {
-    const startDate = moment("2024-01-01", "YYYY-MM-DD");
-    const endDate = moment("2025-03-14", "YYYY-MM-DD");
+    const startDate = moment("2024-01-01");
+    const endDate = moment("2025-03-14");
     return date.isBetween(startDate, endDate, null, "[]");
 };
 
 const markCommit = async (date) => {
     const data = { date: date.toISOString() };
-    await jsonfile.writeFile(file, data);
+    await jsonfile.writeFile(path, data);
 
     const git = simpleGit();
     await git.add([path]);
@@ -27,7 +27,7 @@ const makeCommits = async (n) => {
         const randomWeeks = random.int(0, 54*4);
         const randomDays = random.int(0, 6);
 
-        const randomDate = moment("2024-01-01", "YYYY-MM-DD")
+        const randomDate = moment("2024-01-01")
             .add(randomWeeks, "weeks")
             .add(randomDays, "days");
 
