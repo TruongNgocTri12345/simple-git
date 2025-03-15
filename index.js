@@ -3,7 +3,7 @@ import moment from "moment";
 import simpleGit from "simple-git";
 import random from "random";
 
-const file = "./data.json";
+const path = "./data.json";
 
 const isValidDate = (date) => {
     const startDate = moment("2024-01-01", "YYYY-MM-DD");
